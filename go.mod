@@ -1,4 +1,4 @@
-module github.com/michaelbunch/shopping-cart
+module github.com/michaelbunch/go-web
 
 go 1.16
 
