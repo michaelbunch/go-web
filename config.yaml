@@ -1,0 +1,3 @@
+appName: "Go-Web"
+server:
+  port: 3000
