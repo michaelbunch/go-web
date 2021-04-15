@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gorilla/handlers"
-	"github.com/michaelbunch/shopping-cart/pkg/app"
+	"github.com/michaelbunch/go-web/pkg/app"
 	log "github.com/sirupsen/logrus"
 )
 

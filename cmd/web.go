@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/michaelbunch/shopping-cart/pkg/app"
-	"github.com/michaelbunch/shopping-cart/pkg/server"
+	"github.com/michaelbunch/go-web/pkg/app"
+	"github.com/michaelbunch/go-web/pkg/server"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 )
