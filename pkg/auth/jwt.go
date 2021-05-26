@@ -1,10 +1,12 @@
-package services
+package auth
 
 import (
 	"fmt"
+	"net/http"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/michaelbunch/go-web/pkg/app"
 )
 
 type jwtClaimsDefinition struct {
@@ -15,6 +17,12 @@ var (
 	issuer = "todone-api"
 	secret = "my-secret-key"
 )
+
+// AuthHandler is an endpoint for apikey-based JWT authentication
+func AuthHandler(w http.ResponseWriter, r *http.Request, config app.Config) {
+	// if config.JWT.Client.key == r.Body
+	w.Write([]byte("token"))
+}
 
 // JwtGenerateToken builds and returns a new JWT
 func JwtGenerateToken() (string, error) {

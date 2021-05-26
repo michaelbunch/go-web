@@ -1,3 +1,9 @@
 appName: "Go-Web"
 server:
   port: 3000
+jwt:
+  server:
+    issuer: "go-web"
+    secret: "m8vh34h83u4v9h94v9v23lpd08n5h39d"
+  client:
+    key: "93mf8v98h5rnegh7849hf3uwrgb93h20hgety"
