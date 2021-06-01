@@ -1,3 +1,6 @@
 appName: "Go-Web"
 server:
   port: 3000
+  jwt:
+    issuer: "go-web-api"
+    secret: "secret-jwt-key"

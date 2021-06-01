@@ -14,7 +14,14 @@ type Config struct {
 
 // ServerConfig contains the configuration of the web server
 type ServerConfig struct {
-	Port int `yaml:"port"`
+	Port int       `yaml:"port"`
+	JWT  JWTConfig `yaml:"jwt"`
+}
+
+// JWTConfig contains JWT server settings
+type JWTConfig struct {
+	Issuer string `yaml:"issuer"`
+	Secret string `yaml:"secret"`
 }
 
 // LoadConfig the config from the filesystem

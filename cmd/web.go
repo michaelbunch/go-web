@@ -39,5 +39,6 @@ func run(configPath string) {
 		log.Fatalln(err)
 	}
 
-	server.StartFrontendServer(c)
+	r := server.LoadRouter(c)
+	server.StartFrontendServer(r, c.Server.Port, c.AppName)
 }

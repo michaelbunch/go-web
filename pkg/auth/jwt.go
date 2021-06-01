@@ -1,4 +1,4 @@
-package services
+package auth
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ type jwtClaimsDefinition struct {
 }
 
 var (
-	issuer = "todone-api"
+	issuer = "go-web"
 	secret = "my-secret-key"
 )
 
