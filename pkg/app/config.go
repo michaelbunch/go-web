@@ -10,11 +10,19 @@ import (
 type Config struct {
 	AppName string       `yaml:"appName"`
 	Server  ServerConfig `yaml:"server"`
+	JWT     JWTConfig    `yaml:"jwt"`
 }
 
 // ServerConfig contains the configuration of the web server
 type ServerConfig struct {
 	Port int `yaml:"port"`
+}
+
+// JWTConfig contains JWT server settings
+type JWTConfig struct {
+	Issuer    string `yaml:"issuer"`
+	Secret    string `yaml:"secret"`
+	ClientKey string `yaml:"clientkey"`
 }
 
 // LoadConfig the config from the filesystem
