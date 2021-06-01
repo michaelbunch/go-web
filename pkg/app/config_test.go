@@ -23,11 +23,15 @@ func TestServerConfig(t *testing.T) {
 		t.Errorf("Server Port was incorrect: %d", c.Server.Port)
 	}
 
-	if c.Server.JWT.Issuer != "go-web-api" {
-		t.Errorf("Server JWT Issuer was incorrect: %s", c.Server.JWT.Issuer)
+	if c.JWT.Issuer != "go-web" {
+		t.Errorf("JWT Issuer was incorrect: %s", c.JWT.Issuer)
 	}
 
-	if c.Server.JWT.Secret != "secret-jwt-key" {
-		t.Errorf("Server JWT Secret was incorrect: %s", c.Server.JWT.Secret)
+	if c.JWT.Secret != "m8vh34h83u4v9h94v9v23lpd08n5h39d" {
+		t.Errorf("JWT Secret was incorrect: %s", c.JWT.Secret)
+	}
+
+	if c.JWT.ClientKey != "93mf8v98h5rnegh7849hf3uwrgb93h20hgety" {
+		t.Errorf("JWT ClientKey was incorrect: %s", c.JWT.ClientKey)
 	}
 }
