@@ -3,9 +3,9 @@ package controllers
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 
 	"github.com/michaelbunch/go-web/pkg/auth"
-	log "github.com/sirupsen/logrus"
 )
 
 // AuthUser is the web request for authentication
@@ -21,10 +21,8 @@ var LoginHandler = http.HandlerFunc(
 		d := json.NewDecoder(r.Body)
 		d.Decode(&au)
 
-		email := "asher12000@gmail.com"
-		secret := "3h9dnr2u94h7vren8902g7"
-
-		log.Info(au)
+		email := os.Getenv("API_USER_EMAIL")
+		secret := os.Getenv("API_USER_SECRET")
 
 		if au.Email == email && au.Secret == secret {
 			token, err := auth.JwtGenerateToken()
