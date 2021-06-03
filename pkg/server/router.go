@@ -4,12 +4,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/michaelbunch/go-web/pkg/app"
 	"github.com/michaelbunch/go-web/pkg/controllers"
 )
 
 // LoadRouter prepares and returns the application router
-func LoadRouter(config *app.Config) *mux.Router {
+func LoadRouter() *mux.Router {
 	r := mux.NewRouter()
 	r.StrictSlash(true)
 

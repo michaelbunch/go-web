@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"strconv"
 
 	"github.com/michaelbunch/go-web/pkg/app"
 	"github.com/michaelbunch/go-web/pkg/server"
@@ -13,16 +14,8 @@ func main() {
 	app := &cli.App{
 		Name:  "web",
 		Usage: "Run the web server",
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:    "config",
-				Aliases: []string{"c"},
-				Value:   "config.yaml",
-				Usage:   "Load configuration from `FILE`",
-			},
-		},
 		Action: func(c *cli.Context) error {
-			run(c.String("config"))
+			run()
 			return nil
 		},
 	}
@@ -33,12 +26,9 @@ func main() {
 	}
 }
 
-func run(configPath string) {
-	c, err := app.LoadConfig(configPath)
-	if err != nil {
-		log.Fatalln(err)
-	}
+func run() {
+	app.LoadConfig()
 
-	r := server.LoadRouter(c)
-	server.StartFrontendServer(r, c.Server.Port, c.AppName)
+	port, _ := strconv.Atoi(os.Getenv("PORT"))
+	server.StartFrontendServer(server.LoadRouter(), port, os.Getenv("APP_NAME"))
 }

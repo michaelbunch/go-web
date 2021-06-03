@@ -3,24 +3,18 @@ package auth
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/michaelbunch/go-web/pkg/app"
 )
 
 type jwtClaimsDefinition struct {
 	jwt.StandardClaims
 }
 
-var (
-	issuer = "go-web"
-	secret = "my-secret-key"
-)
-
 // AuthHandler is an endpoint for apikey-based JWT authentication
-func AuthHandler(w http.ResponseWriter, r *http.Request, config app.Config) {
-	// if config.JWT.Client.key == r.Body
+func AuthHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("token"))
 }
 
@@ -28,14 +22,14 @@ func AuthHandler(w http.ResponseWriter, r *http.Request, config app.Config) {
 func JwtGenerateToken() (string, error) {
 	claims := jwtClaimsDefinition{
 		jwt.StandardClaims{
-			Issuer:    issuer,
+			Issuer:    os.Getenv("JWT_ISSUER"),
 			ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
 		},
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	secret := []byte(secret)
+	secret := []byte(os.Getenv("JWT_SECRET"))
 	tokenString, err := token.SignedString(secret)
 
 	return tokenString, err
@@ -47,7 +41,7 @@ func JwtValidateToken(tokenString string) bool {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
 		}
-		return []byte(secret), nil
+		return []byte(os.Getenv("JWT_SECRET")), nil
 	})
 	if err != nil {
 		return false
