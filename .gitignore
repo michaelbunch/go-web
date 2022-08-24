@@ -1,7 +1,9 @@
+# Go development
 bin/
 tmp/
+.env
+
+# Frontend development
 frontend/.parcel-cache/
 frontend/dist/
 frontend/node_modules/
-
-.env
