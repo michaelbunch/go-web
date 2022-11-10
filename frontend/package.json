@@ -4,7 +4,7 @@
     "build": "parcel build src/index.html"
   },
   "devDependencies": {
-    "@parcel/transformer-vue": "^2.6.2",
+    "@parcel/transformer-vue": "^2.8.0",
     "autoprefixer": "^10.4.7",
     "parcel": "^2.6.2",
     "postcss": "^8.4.14",
